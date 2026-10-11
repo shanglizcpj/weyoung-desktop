@@ -4,16 +4,20 @@
 
 ## 下载
 
+**[下载完整离线安装版 v1.0.2（推荐）](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.2/Weyoung-Desktop-1.0.2-Setup-x64.exe)** · [安装包 SHA-256 校验文件](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.2/Weyoung-Desktop-1.0.2-Setup-x64.exe.sha256)
+
+安装版为单个 EXE，运行后选择安装位置，可创建桌面快捷方式，并提供 Windows 卸载入口。安装过程无需联网下载组件。
+
 **[下载 Windows x64 便携版 v1.0.2](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.2/Weyoung-Desktop-1.0.2-win-x64.zip)** · [查看 Releases](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.2) · [SHA-256 校验文件](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.2/Weyoung-Desktop-1.0.2-win-x64.zip.sha256)
 
-下载包约 **429 MiB**，完整解压后约 **1.01 GiB**。本仓库用于发布可下载的软件包和使用说明。
+离线安装包约 **278.5 MiB**；便携 ZIP 约 **429 MiB**。安装或完整解压后约 **1.01 GiB**。本仓库用于发布可下载的软件包和使用说明。
 
-请下载 Releases 中的 **Weyoung-Desktop-1.0.2-win-x64.zip**。GitHub 自动生成的 “Source code” 压缩包只有仓库内容，不是可运行的软件。
+请下载 Releases 中的 **Weyoung-Desktop-1.0.2-Setup-x64.exe**（安装版）或 **Weyoung-Desktop-1.0.2-win-x64.zip**（便携版）。GitHub 自动生成的 “Source code” 压缩包只有仓库内容，不是可运行的软件。
 
 ## 快速开始
 
-1. 将 ZIP 完整解压到可写目录，例如 **D:\Apps\Weyoung**。
-2. 打开解压后的文件夹，双击 **Weyoung.exe**，即可进入桌面界面。
+1. 安装版：双击 **Setup-x64.exe**，按中文向导选择当前用户可写的安装目录；路径可自行选择，无固定盘符或用户名。便携版：完整解压 ZIP 到可写目录。
+2. 安装完成后点击桌面或开始菜单中的 **未央 WeYoung**；便携版双击目录内的 **Weyoung.exe**。
 3. 点击“登录并开始”，输入自己的 weyoung.space 账号和密码；开启两步验证的账号还需输入验证码。
 4. 选择账号已有的 **API 密钥** 和 **模型**，点击“使用此模型”。无需手动复制 API Key 或填写接口地址。
 5. 直接输入消息开始对话。左侧可新建文件夹或打开已有项目，右键管理项目和对话；搜索框可搜索项目名称、路径及对话标题。
@@ -21,7 +25,7 @@
 
 无需单独安装 Node.js、Git 或 Docker。软件使用账号已有的模型权限与额度，模型调用费用及可用性以中转站为准。
 
-> 请完整解压后运行。Weyoung.exe 需要同目录的运行文件，不能只复制一个 EXE，也不要直接从压缩包内启动。
+> 使用便携 ZIP 时，请完整解压后运行。Weyoung.exe 需要同目录的运行文件，不能只复制一个 EXE，也不要直接从压缩包内启动。
 
 ## 系统要求
 
@@ -62,7 +66,11 @@
 
 ### 这是安装程序吗？
 
-这是便携版，无需安装向导。解压完整目录后双击 Weyoung.exe 即可；也可以为该 EXE 创建桌面快捷方式。
+提供两个版本：**Setup-x64.exe** 是完整离线安装程序，可以选择位置、创建快捷方式和卸载；**win-x64.zip** 是便携版，解压后双击 Weyoung.exe 即可。两者功能相同。
+
+升级前请关闭未央并备份数据，再运行新版安装包，沿用原安装目录。覆盖安装保留账号、聊天、项目文件和自定义数据路径。更换安装目录不会自动搬迁旧数据。
+
+卸载只删除程序清单中的文件和本安装的快捷方式，保留账号、聊天、项目文件及其他用户资料。如需清除个人数据，请确认备份后自行处理。
 
 ### 为什么找不到密钥或模型？
 
@@ -77,6 +85,16 @@
 当前版本尚未进行发行者代码签名。请确认下载地址属于本仓库 Releases，并按下方方法核对文件校验值。
 
 ## 文件校验
+
+安装版的 SHA-256：
+
+```text
+ed80bf7000829f7d5f52705a58ad2912f9ae8d64d834a28c1baa2e72221d2e9f
+```
+
+```powershell
+Get-FileHash .\Weyoung-Desktop-1.0.2-Setup-x64.exe -Algorithm SHA256
+```
 
 在 ZIP 所在目录打开 PowerShell，执行：
 
@@ -96,9 +114,13 @@ v1.0.2 新增工具自动执行、账号站点入口、项目/对话侧栏管理
 
 37 项自动化回归检查通过。实际桌面测试覆盖模拟登录、模型选择、Write/Bash/Read 自动工具链、手动拒绝、模式切换、真实问题交互、项目/对话管理、搜索、默认目录、迁移重启、会话恢复、停止和界面隔离；独立中文路径下的 EXE 启动及 960px 布局验证通过。联网模型兼容性仍取决于具体中转站服务和所选模型；发布测试未使用真实账号额度。下载包不包含发布者的账号或聊天记录。
 
+安装包已验证静默安装到中文含空格路径、全部载荷文件、桌面及开始菜单快捷方式、安装后应用启动、运行时拒绝覆盖、覆盖安装保留模拟数据，以及卸载后保留账号/聊天/项目/路径设置/额外文件。
+
 ## 第三方组件
 
 运行包包含 Electron 44.7.0、未修改的官方 Claude Code Windows 核心 2.1.296 和 Portable Git 2.56.0.2；相关许可与声明保留在包内的 THIRD_PARTY.md 及组件目录中。
+
+安装器使用 [NSIS](https://nsis.sourceforge.io/)；相关许可副本为安装目录下的 NSIS-LICENSE.txt。
 
 本客户端是独立产品，并非 Anthropic 官方应用。Claude Code 的使用适用其[官方条款](https://code.claude.com/docs/en/legal-and-compliance)，包括产品集成与凭据使用条件；各组件依其自身许可提供，仓库公开不意味着所有组件均采用开源许可。
 
