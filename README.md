@@ -1,141 +1,84 @@
 # 未央 WeYoung 桌面版
 
-面向 Windows 的中文 AI 桌面客户端，连接 [未央中转站](https://weyoung.space)。登录自己的账号后，可直接选择账号已有的 API 密钥和模型，在桌面窗口中聊天、阅读项目、协助编写代码和处理文件。
+面向 Windows 的中文 AI 桌面客户端，连接 [未央中转站](https://weyoung.space)。使用自己的账号登录，直接选择已有 API 密钥和模型，在桌面窗口中聊天、阅读项目、编写代码和处理文件。
 
-## 下载
+## 下载 v1.0.4
 
-**[下载完整离线安装版 v1.0.3（推荐）](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.3/Weyoung-Desktop-1.0.3-Setup-x64.exe)** · [安装包 SHA-256 校验文件](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.3/Weyoung-Desktop-1.0.3-Setup-x64.exe.sha256)
+**[下载完整离线安装包（推荐）](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.4/Weyoung-Desktop-1.0.4-Setup-x64.exe)** · [安装包 SHA-256](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.4/Weyoung-Desktop-1.0.4-Setup-x64.exe.sha256)
 
-安装版为单个 EXE，运行后选择安装位置，可创建桌面快捷方式，并提供 Windows 卸载入口。安装过程无需联网下载组件。
+**[下载 Windows x64 便携 ZIP](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.4/Weyoung-Desktop-1.0.4-win-x64.zip)** · [便携包 SHA-256](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.4/Weyoung-Desktop-1.0.4-win-x64.zip.sha256) · [本次更新](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.4)
 
-**[下载 Windows x64 便携版 v1.0.3](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.3/Weyoung-Desktop-1.0.3-win-x64.zip)** · [查看 Releases](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.3) · [SHA-256 校验文件](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.3/Weyoung-Desktop-1.0.3-win-x64.zip.sha256)
+安装包约 278.5 MiB，便携 ZIP 约 429.2 MiB，安装后约 1.01 GiB。安装程序可选择位置、创建桌面和开始菜单快捷方式、提供卸载入口；安装无需联网下载组件。便携版需完整解压后双击 **Weyoung.exe**，不要只复制 EXE。无需单独安装 Node、Git 或 Docker。
 
-离线安装包约 **278.5 MiB**；便携 ZIP 约 **429 MiB**。安装或完整解压后约 **1.01 GiB**。本仓库用于发布可下载的软件包和使用说明。
+本仓库发布软件包和用户说明。GitHub 自动生成的 Source code 压缩包不是可运行软件。
 
-请下载 Releases 中的 **Weyoung-Desktop-1.0.3-Setup-x64.exe**（安装版）或 **Weyoung-Desktop-1.0.3-win-x64.zip**（便携版）。GitHub 自动生成的 “Source code” 压缩包只有仓库内容，不是可运行的软件。
+## v1.0.4：文件和图片附件
 
-## v1.0.3 鼠标兼容修复
+- 输入框左下角点击 **＋ 附件** 多选文件，也可以拖拽文件到窗口，或在输入框 **Ctrl+V 粘贴截图**。
+- 发送前显示文件名、大小和图片缩略图；点击图片可放大，点击 × 移除。支持只发附件。
+- 无需手工把文件放进工作文件夹：普通文件会自动保存副本供模型读取，图片直接随消息提交给模型。
+- 已发送附件随对话保留；重启后可预览图片，迁移应用数据时附件一起复制，删除对话清理副本并保留原件。
+- 发送启动失败保留待发附件；切换对话、退出账号或关闭程序会清理尚未发送的附件。
 
-修复首次输入后打开项目确认框时，鼠标在整个未央窗口内持续隐藏、移到窗口外又恢复的问题。采用 [Electron 同类问题的启动规避方式](https://github.com/electron/electron/issues/54630)，仅禁用未央内部的输入时隐藏鼠标功能。项目授权流程和 Windows 鼠标设置不变。
+每条消息最多 **8 个文件**，单个 **20 MB**，总计 **50 MB**。图片支持 **PNG、JPG/JPEG**，发送时自动缩小；图片识别需要所选模型和中转接口支持视觉输入。Office 等文档的读取能力取决于运行环境中可用的解析工具。点击发送后，图片及模型读取的文件内容会通过所选中转站提交处理；本功能不是独立的云端文件存储服务。
 
-老用户请先关闭未央，再运行新版安装包并沿用原安装目录，账号、聊天和项目文件会保留。无需卸载旧版。
+## 开始使用
 
-## 检查更新和历史版本
+1. 安装到当前电脑有空间且可写的位置，或完整解压便携包。盘符、用户名、中文及空格路径均可按实际电脑选择。
+2. 打开未央，点击“登录并开始”。账号窗口里的 **weyoung.space ↗** 可在浏览器注册登录、设置 API Key 和查询余额。
+3. 登录自己的中转站账号，选择已有密钥和模型，无需手填接口或复制密钥。开启两步验证的账号需要验证码。
+4. 左侧新建文件夹或打开已有项目；在输入框输入消息或添加附件。Enter 发送，Shift+Enter 换行，“停止”中断任务。
+5. 右键或“⋯”管理项目与对话；搜索框按项目名、路径及对话标题搜索。
 
-账号界面点击“检查更新”，可查看是否有新版；不需要中转站登录或 API Key。发现更新后点击“下载新版安装包”，在浏览器完成下载，然后关闭未央并沿用原目录安装。账号、聊天及项目文件保留。网络失败可重试，应用不会强制退出当前任务。
+默认“常规操作自动”会处理常见 Bash、PowerShell 目录操作和文件读写。**实际运行代码文件、项目程序、测试任务和无法判定的命令仍会询问用户**。模型提问仍需回答。首次项目访问确认保留，也可以切换为逐次确认工具。项目目录是工作目录，文件访问权限与当前 Windows 账号一致。
 
-[所有历史版本](https://github.com/shanglizcpj/weyoung-desktop/releases) · [v1.0.0](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.0) · [v1.0.1](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.1) · [v1.0.2](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.2)
+## 保存位置与升级
 
-## 快速开始
+“应用设置”可分别设置生成文件的默认目录，以及聊天、附件和应用数据目录。默认跟随软件目录；不可写时使用当前用户应用数据目录，无固定盘符要求。已选项目使用自己的目录。迁移数据先复制再切换，旧目录保留，项目文件独立管理。
 
-1. 安装版：双击 **Setup-x64.exe**，按中文向导选择当前用户可写的安装目录；路径可自行选择，无固定盘符或用户名。便携版：完整解压 ZIP 到可写目录。
-2. 安装完成后点击桌面或开始菜单中的 **未央 WeYoung**；便携版双击目录内的 **Weyoung.exe**。
-3. 点击“登录并开始”，输入自己的 weyoung.space 账号和密码；开启两步验证的账号还需输入验证码。
-4. 选择账号已有的 **API 密钥** 和 **模型**，点击“使用此模型”。无需手动复制 API Key 或填写接口地址。
-5. 直接输入消息开始对话。左侧可新建文件夹或打开已有项目，右键管理项目和对话；搜索框可搜索项目名称、路径及对话标题。
-6. 左下角“应用设置”可分别更改生成文件默认目录、聊天和应用数据目录。账号窗口内的站点链接可跳转浏览器进行注册、密钥设置和余额查询。
+账号界面 **检查更新** 可查询最新正式版，无需登录中转站。发现新版本后，点击下载，在浏览器取得安装包。请关闭未央，再安装到原目录，保留账号、聊天、附件、项目文件及自定义路径；无需先卸载旧版。软件不会强制退出正在进行的任务或后台静默升级。
 
-无需单独安装 Node.js、Git 或 Docker。软件使用账号已有的模型权限与额度，模型调用费用及可用性以中转站为准。
+升级前请关闭软件并备份应用数据及项目。卸载只删除程序拥有的文件，保留个人数据；更换安装目录不会自动搬迁旧数据。自定义绝对路径换电脑后应重新检查。
 
-> 使用便携 ZIP 时，请完整解压后运行。Weyoung.exe 需要同目录的运行文件，不能只复制一个 EXE，也不要直接从压缩包内启动。
+[所有历史版本](https://github.com/shanglizcpj/weyoung-desktop/releases) · [v1.0.3](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.3) · [v1.0.2](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.2) · [v1.0.1](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.1) · [v1.0.0](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.0)
 
-## 系统要求
+## 兼容性与验证
 
-| 项目 | 要求 |
-| --- | --- |
-| 操作系统 | Windows 10 / 11，x64 |
-| 网络 | 登录和模型调用需要联网 |
-| 账号 | 可正常登录 weyoung.space，并有可用密钥、模型和额度 |
-| 磁盘空间 | 建议预留至少 2 GB，另需为项目和对话数据预留空间 |
-| 项目环境 | Python、Java 等项目运行环境按项目自身要求准备 |
+支持 Windows 10/11 x64。安装和程序启动可离线完成；账号登录和模型对话需要联网，并使用自己的中转站额度。Python、Java 等项目专用环境需按任务准备。
 
-## 常用功能
+本版本通过 54 项自动化检查，并用真实 Windows 运行核心及本地模拟接口验证文件读取、图片请求内容、选文件/拖拽/截图粘贴、仅附件发送、失败重试、历史预览和删除清理；同时验证原有聊天、目录迁移和 960px 窗口布局。完整安装、从 1.0.3 升级、覆盖安装、运行中禁止替换及卸载保留数据均已测试。测试不消耗真实账号额度；具体模型的视觉及文件能力仍取决于所选服务。
 
-- 中文桌面界面，使用未央 WeYoung 图标。
-- 账号登录、两步验证、密钥和模型选择。
-- 流式回复、历史对话与继续会话。
-- 选择本地项目，阅读、分析及修改项目文件。
-- 常规文件操作默认自动执行；运行代码、脚本、项目程序和无法判定的命令需单独确认。可切回所有工具逐次确认；模型提问保留交互。
-- 项目新建、打开、搜索与显示名称修改；右键重命名或删除对话。
-- 默认文件目录和应用数据目录分别设置，适应每台电脑的盘符及用户名。
-- 点击“停止”中断当前任务。
+保留 v1.0.3 的鼠标显示兼容处理、账号更新入口及代码运行确认。若遇到启动时的 WINWORD.EXE 报错，可使用 [Word 启动诊断工具](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.3/Weyoung-Word-Startup-Diagnostics.zip) 采集报告；该问题需结合报错电脑的报告判断原因。
 
-常规操作自动模式会处理常见 Bash、PowerShell 目录命令和文件读写；Python/Node 脚本、PowerShell -File、npm run/test、项目程序和无法判定的命令会显示命令及执行目录，必须允许本次运行后才执行。选中的文件夹是工作目录，可以写入其中的文件。审批规则不是操作系统文件沙箱，文件访问权限与 Windows 当前账号一致。项目重命名只改侧栏名称，移除项目不删除磁盘文件；删除对话移除桌面端记录，核心会话日志可能仍保留。
+密码不保存，模型密钥不传给界面；登录令牌由本机目录权限保护，当前不是加密存储。对外分享请使用 Releases 中的干净包，不要分享自己使用后的 data 文件夹。删除对话后，核心日志仍可能保存处理过的内容。
 
-输入框中 **Enter** 发送，**Shift + Enter** 换行。首次访问项目时会询问是否允许访问该目录；请确认目录后再开始。
+软件尚未进行发行者代码签名。请从本仓库 Releases 下载并核对校验值。
 
-## 数据保存和备份
+## 校验下载文件
 
-默认使用软件旁的 **data** 文件夹；软件目录不可写时自动使用当前 Windows 用户的应用数据目录。路径按当前电脑确定，不要求 D 盘或指定用户名。
-
-“应用设置”提供两类位置：**生成文件默认保存位置**用于没有选择其他项目时的工作目录；选择项目后使用项目目录，已有对话保持自己的路径。可点击“在默认目录新建对话”切回默认位置。模型指定绝对路径时仍可写到其他位置。
-
-**聊天记录和应用数据**可迁移到空文件夹。账号、对话及核心配置复制完成后才切换并重启，旧数据保留；缓存重新生成，项目文件和生成文件默认目录不迁移。自定义路径是当前电脑的绝对路径，换电脑时需要重新选择。
-
-移动或备份前请先关闭软件。备份当前数据目录、软件旁的 weyoung-paths.json（若存在）及自己的项目文件；移动后确认项目路径仍有效。账号密码不保存；登录令牌保存在本机并受 Windows 目录访问权限保护，当前不是加密存储。对外分享请使用 Releases 中的干净压缩包，不要分享自己使用后的 data 文件夹。
-
-## 常见问题
-
-### 这是安装程序吗？
-
-提供两个版本：**Setup-x64.exe** 是完整离线安装程序，可以选择位置、创建快捷方式和卸载；**win-x64.zip** 是便携版，解压后双击 Weyoung.exe 即可。两者功能相同。
-
-升级前请关闭未央并备份数据，再运行新版安装包，沿用原安装目录。覆盖安装保留账号、聊天、项目文件和自定义数据路径。更换安装目录不会自动搬迁旧数据。
-
-卸载只删除程序清单中的文件和本安装的快捷方式，保留账号、聊天、项目文件及其他用户资料。如需清除个人数据，请确认备份后自行处理。
-
-### 为什么找不到密钥或模型？
-
-先登录中转站网页，确认当前账号已经创建可用密钥，并具有对应模型权限。客户端展示账号已有的密钥和模型，不会自动生成额度。
-
-### 为什么模型请求失败？
-
-检查网络、账号余额、密钥状态和模型可用性。若项目需要 Python 等工具，还需要准备项目自身的运行环境。可尝试停止当前任务、重新选择模型或重新登录。
-
-### Windows 提示未知发布者怎么办？
-
-当前版本尚未进行发行者代码签名。请确认下载地址属于本仓库 Releases，并按下方方法核对文件校验值。
-
-## 文件校验
-
-安装版的 SHA-256：
+安装包 SHA-256：
 
 ```text
-ed80bf7000829f7d5f52705a58ad2912f9ae8d64d834a28c1baa2e72221d2e9f
+d78f26cdb60fe1ee4a814af525b32ba54869432bb82c9baf9bc4bee49dac64dd
 ```
 
-```powershell
-Get-FileHash .\Weyoung-Desktop-1.0.3-Setup-x64.exe -Algorithm SHA256
-```
-
-在 ZIP 所在目录打开 PowerShell，执行：
-
-```powershell
-Get-FileHash .\Weyoung-Desktop-1.0.3-win-x64.zip -Algorithm SHA256
-```
-
-v1.0.3 的 SHA-256：
+便携 ZIP SHA-256：
 
 ```text
-454c341c7d4ad26cb6a4b77eaff097605aed4546e49660362eead2e86b1347dd
+1a9d16283a141ada1d6ca1cd592e50a6ebb85158c05c0b68cfc456a6ddd43623
 ```
 
-## 版本与验证范围
+在文件所在目录运行 PowerShell：
 
-v1.0.3 新增检查更新、代码运行确认及鼠标兼容修复；保留账号站点入口、项目/对话侧栏管理和两类保存位置设置。修复快速切换对话时可能将消息发到旧对话的问题。
-
-49 项自动化回归检查通过。实际桌面测试覆盖模拟登录、模型选择、Write/Bash/Read 自动工具链、手动拒绝、模式切换、真实问题交互、项目/对话管理、搜索、默认目录、迁移重启、会话恢复、停止和界面隔离；独立中文路径下的 EXE 启动及 960px 布局验证通过。联网模型兼容性仍取决于具体中转站服务和所选模型；发布测试未使用真实账号额度。下载包不包含发布者的账号或聊天记录。
-
-安装包已验证静默安装到中文含空格路径、全部载荷文件、桌面及开始菜单快捷方式、安装后应用启动、运行时拒绝覆盖、覆盖安装保留模拟数据，以及卸载后保留账号/聊天/项目/路径设置/额外文件。
+```powershell
+Get-FileHash .\Weyoung-Desktop-1.0.4-Setup-x64.exe -Algorithm SHA256
+Get-FileHash .\Weyoung-Desktop-1.0.4-win-x64.zip -Algorithm SHA256
+```
 
 ## 第三方组件
 
-运行包包含 Electron 44.7.0、未修改的官方 Claude Code Windows 核心 2.1.296 和 Portable Git 2.56.0.2；相关许可与声明保留在包内的 THIRD_PARTY.md 及组件目录中。
-
-安装器使用 [NSIS](https://nsis.sourceforge.io/)；相关许可副本为安装目录下的 NSIS-LICENSE.txt。
-
-本客户端是独立产品，并非 Anthropic 官方应用。Claude Code 的使用适用其[官方条款](https://code.claude.com/docs/en/legal-and-compliance)，包括产品集成与凭据使用条件；各组件依其自身许可提供，仓库公开不意味着所有组件均采用开源许可。
+包含 Electron 44.7.0、未修改的官方 Claude Code Windows 核心 2.1.296 及 Portable Git 2.56.0.2。相关许可保留在包内 THIRD_PARTY.md 及组件目录；安装器使用 [NSIS](https://nsis.sourceforge.io/)。客户端为独立产品，并非 Anthropic 官方应用；Claude Code 使用适用其[官方条款](https://code.claude.com/docs/en/legal-and-compliance)，各组件依其自身许可提供。
 
 ## 问题反馈
 
-请在 [Issues](https://github.com/shanglizcpj/weyoung-desktop/issues) 中描述系统版本、软件版本、操作步骤和错误提示。截图或日志中请去掉密码、API Key、登录令牌及私人项目内容。
+请在 [Issues](https://github.com/shanglizcpj/weyoung-desktop/issues) 中描述系统和软件版本、操作步骤及错误提示。提交截图和日志前请去掉密码、API Key、登录令牌及私人项目内容。
