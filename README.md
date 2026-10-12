@@ -4,15 +4,27 @@
 
 ## 下载
 
-**[下载完整离线安装版 v1.0.2（推荐）](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.2/Weyoung-Desktop-1.0.2-Setup-x64.exe)** · [安装包 SHA-256 校验文件](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.2/Weyoung-Desktop-1.0.2-Setup-x64.exe.sha256)
+**[下载完整离线安装版 v1.0.3（推荐）](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.3/Weyoung-Desktop-1.0.3-Setup-x64.exe)** · [安装包 SHA-256 校验文件](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.3/Weyoung-Desktop-1.0.3-Setup-x64.exe.sha256)
 
 安装版为单个 EXE，运行后选择安装位置，可创建桌面快捷方式，并提供 Windows 卸载入口。安装过程无需联网下载组件。
 
-**[下载 Windows x64 便携版 v1.0.2](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.2/Weyoung-Desktop-1.0.2-win-x64.zip)** · [查看 Releases](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.2) · [SHA-256 校验文件](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.2/Weyoung-Desktop-1.0.2-win-x64.zip.sha256)
+**[下载 Windows x64 便携版 v1.0.3](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.3/Weyoung-Desktop-1.0.3-win-x64.zip)** · [查看 Releases](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.3) · [SHA-256 校验文件](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.3/Weyoung-Desktop-1.0.3-win-x64.zip.sha256)
 
 离线安装包约 **278.5 MiB**；便携 ZIP 约 **429 MiB**。安装或完整解压后约 **1.01 GiB**。本仓库用于发布可下载的软件包和使用说明。
 
-请下载 Releases 中的 **Weyoung-Desktop-1.0.2-Setup-x64.exe**（安装版）或 **Weyoung-Desktop-1.0.2-win-x64.zip**（便携版）。GitHub 自动生成的 “Source code” 压缩包只有仓库内容，不是可运行的软件。
+请下载 Releases 中的 **Weyoung-Desktop-1.0.3-Setup-x64.exe**（安装版）或 **Weyoung-Desktop-1.0.3-win-x64.zip**（便携版）。GitHub 自动生成的 “Source code” 压缩包只有仓库内容，不是可运行的软件。
+
+## v1.0.3 鼠标兼容修复
+
+修复首次输入后打开项目确认框时，鼠标在整个未央窗口内持续隐藏、移到窗口外又恢复的问题。采用 [Electron 同类问题的启动规避方式](https://github.com/electron/electron/issues/54630)，仅禁用未央内部的输入时隐藏鼠标功能。项目授权流程和 Windows 鼠标设置不变。
+
+老用户请先关闭未央，再运行新版安装包并沿用原安装目录，账号、聊天和项目文件会保留。无需卸载旧版。
+
+## 检查更新和历史版本
+
+账号界面点击“检查更新”，可查看是否有新版；不需要中转站登录或 API Key。发现更新后点击“下载新版安装包”，在浏览器完成下载，然后关闭未央并沿用原目录安装。账号、聊天及项目文件保留。网络失败可重试，应用不会强制退出当前任务。
+
+[所有历史版本](https://github.com/shanglizcpj/weyoung-desktop/releases) · [v1.0.0](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.0) · [v1.0.1](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.1) · [v1.0.2](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.2)
 
 ## 快速开始
 
@@ -43,12 +55,12 @@
 - 账号登录、两步验证、密钥和模型选择。
 - 流式回复、历史对话与继续会话。
 - 选择本地项目，阅读、分析及修改项目文件。
-- 工具默认自动执行；可切回逐次确认。模型需要用户回答的问题保留交互。
+- 常规文件操作默认自动执行；运行代码、脚本、项目程序和无法判定的命令需单独确认。可切回所有工具逐次确认；模型提问保留交互。
 - 项目新建、打开、搜索与显示名称修改；右键重命名或删除对话。
 - 默认文件目录和应用数据目录分别设置，适应每台电脑的盘符及用户名。
 - 点击“停止”中断当前任务。
 
-自动执行模式会以当前 Windows 账号权限直接执行 Bash 和文件操作，可在输入框旁或设置中切回逐次确认。项目重命名只改侧栏名称，移除项目不删除磁盘文件；删除对话移除桌面端记录，核心会话日志可能仍保留。
+常规操作自动模式会处理常见 Bash、PowerShell 目录命令和文件读写；Python/Node 脚本、PowerShell -File、npm run/test、项目程序和无法判定的命令会显示命令及执行目录，必须允许本次运行后才执行。选中的文件夹是工作目录，可以写入其中的文件。审批规则不是操作系统文件沙箱，文件访问权限与 Windows 当前账号一致。项目重命名只改侧栏名称，移除项目不删除磁盘文件；删除对话移除桌面端记录，核心会话日志可能仍保留。
 
 输入框中 **Enter** 发送，**Shift + Enter** 换行。首次访问项目时会询问是否允许访问该目录；请确认目录后再开始。
 
@@ -93,16 +105,16 @@ ed80bf7000829f7d5f52705a58ad2912f9ae8d64d834a28c1baa2e72221d2e9f
 ```
 
 ```powershell
-Get-FileHash .\Weyoung-Desktop-1.0.2-Setup-x64.exe -Algorithm SHA256
+Get-FileHash .\Weyoung-Desktop-1.0.3-Setup-x64.exe -Algorithm SHA256
 ```
 
 在 ZIP 所在目录打开 PowerShell，执行：
 
 ```powershell
-Get-FileHash .\Weyoung-Desktop-1.0.2-win-x64.zip -Algorithm SHA256
+Get-FileHash .\Weyoung-Desktop-1.0.3-win-x64.zip -Algorithm SHA256
 ```
 
-v1.0.2 的 SHA-256：
+v1.0.3 的 SHA-256：
 
 ```text
 454c341c7d4ad26cb6a4b77eaff097605aed4546e49660362eead2e86b1347dd
@@ -110,9 +122,9 @@ v1.0.2 的 SHA-256：
 
 ## 版本与验证范围
 
-v1.0.2 新增工具自动执行、账号站点入口、项目/对话侧栏管理和两类保存位置设置。修复快速切换对话时可能将消息发到旧对话的问题。
+v1.0.3 新增检查更新、代码运行确认及鼠标兼容修复；保留账号站点入口、项目/对话侧栏管理和两类保存位置设置。修复快速切换对话时可能将消息发到旧对话的问题。
 
-37 项自动化回归检查通过。实际桌面测试覆盖模拟登录、模型选择、Write/Bash/Read 自动工具链、手动拒绝、模式切换、真实问题交互、项目/对话管理、搜索、默认目录、迁移重启、会话恢复、停止和界面隔离；独立中文路径下的 EXE 启动及 960px 布局验证通过。联网模型兼容性仍取决于具体中转站服务和所选模型；发布测试未使用真实账号额度。下载包不包含发布者的账号或聊天记录。
+49 项自动化回归检查通过。实际桌面测试覆盖模拟登录、模型选择、Write/Bash/Read 自动工具链、手动拒绝、模式切换、真实问题交互、项目/对话管理、搜索、默认目录、迁移重启、会话恢复、停止和界面隔离；独立中文路径下的 EXE 启动及 960px 布局验证通过。联网模型兼容性仍取决于具体中转站服务和所选模型；发布测试未使用真实账号额度。下载包不包含发布者的账号或聊天记录。
 
 安装包已验证静默安装到中文含空格路径、全部载荷文件、桌面及开始菜单快捷方式、安装后应用启动、运行时拒绝覆盖、覆盖安装保留模拟数据，以及卸载后保留账号/聊天/项目/路径设置/额外文件。
 
