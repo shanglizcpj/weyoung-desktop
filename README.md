@@ -2,17 +2,24 @@
 
 面向 Windows 的中文 AI 桌面客户端，连接 [未央中转站](https://weyoung.space)。使用自己的账号登录，直接选择已有 API 密钥和模型，在桌面窗口中聊天、阅读项目、编写代码和处理文件。
 
-## 下载 v1.0.5
+## 下载 v1.0.6
 
-**[下载完整离线安装包（推荐）](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.5/Weyoung-Desktop-1.0.5-Setup-x64.exe)** · [安装包 SHA-256](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.5/Weyoung-Desktop-1.0.5-Setup-x64.exe.sha256)
+**[下载完整离线安装包（推荐）](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.6/Weyoung-Desktop-1.0.6-Setup-x64.exe)** · [安装包 SHA-256](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.6/Weyoung-Desktop-1.0.6-Setup-x64.exe.sha256)
 
-**[下载 Windows x64 便携 ZIP](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.5/Weyoung-Desktop-1.0.5-win-x64.zip)** · [便携包 SHA-256](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.5/Weyoung-Desktop-1.0.5-win-x64.zip.sha256) · [本次更新](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.5)
+**[下载 Windows x64 便携 ZIP](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.6/Weyoung-Desktop-1.0.6-win-x64.zip)** · [便携包 SHA-256](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.6/Weyoung-Desktop-1.0.6-win-x64.zip.sha256) · [本次更新](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.6)
 
 安装包约 278.5 MiB，便携 ZIP 约 429.2 MiB，安装后约 1.01 GiB。安装程序可选择位置、创建桌面和开始菜单快捷方式、提供卸载入口；安装无需联网下载组件。便携版需完整解压后双击 **Weyoung.exe**，不要只复制 EXE。无需单独安装 Node、Git 或 Docker。
 
 本仓库发布软件包和用户说明。GitHub 自动生成的 Source code 压缩包不是可运行软件。
 
-## v1.0.5：项目目录与启动更新提醒
+## v1.0.6：常规检查自动通过
+
+- 修复查看 Git 仓库位置、文件状态或目录时，因输出重定向而误弹“是否运行这段代码？”的问题。
+- “常规操作自动”模式下，常见 Bash/PowerShell/cmd 输出合并、输出文件，以及 git -C 指定目录查询自动执行。
+- 创建文件夹、文件读写继续自动执行；实际运行 .cmd/.bat、脚本或程序仍需确认。主动选择“逐次确认”的用户仍按其选择执行。
+- 所有权限判断在本机完成，不增加模型审核请求。旧版用户关闭客户端后安装到原目录即可升级。
+
+## 项目目录与启动更新提醒（1.0.5 起）
 
 - 项目文件夹右键或点击 **⋯ → 在资源管理器中打开**，直接打开对应的本地文件夹。
 - 每次打开客户端自动在后台检查更新；发现新版才弹窗，可下载或选择“稍后再说”。断网或已是最新版时不打断使用；不会自动安装。
@@ -47,13 +54,13 @@
 
 升级前请关闭软件并备份应用数据及项目。卸载只删除程序拥有的文件，保留个人数据；更换安装目录不会自动搬迁旧数据。自定义绝对路径换电脑后应重新检查。
 
-[所有历史版本](https://github.com/shanglizcpj/weyoung-desktop/releases) · [v1.0.4](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.4) · [v1.0.3](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.3) · [v1.0.2](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.2) · [v1.0.1](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.1) · [v1.0.0](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.0)
+[所有历史版本](https://github.com/shanglizcpj/weyoung-desktop/releases) · [v1.0.5](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.5) · [v1.0.4](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.4) · [v1.0.3](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.3) · [v1.0.2](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.2) · [v1.0.1](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.1) · [v1.0.0](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.0)
 
 ## 兼容性与验证
 
 支持 Windows 10/11 x64。安装和程序启动可离线完成；账号登录和模型对话需要联网，并使用自己的中转站额度。Python、Java 等项目专用环境需按任务准备。
 
-本版本通过 65 项自动化检查，验证了文件夹路径和账号归属、后台更新去重、离线启动、弹窗延后和关闭、常规多行写入及脚本运行确认；附件、聊天、迁移和窗口布局回归通过。完整安装、从 1.0.4 升级、覆盖安装、运行中禁止替换及卸载保留数据均已测试。模型测试使用真实 Windows 运行核心和本地模拟接口，不消耗真实账号额度；具体模型的视觉及文件能力仍取决于所选服务。
+本版本通过 71 项自动化检查，真实 Windows 运行核心已验证普通文件写入、Git 查询与输出重定向无需确认；界面验证脚本运行须确认、取消后不执行。便携启动、完整安装、从 1.0.5 升级、覆盖安装、运行中禁止替换及卸载保留数据均已测试。模型测试使用本地模拟接口，不消耗真实账号额度。
 
 保留 v1.0.3 的鼠标显示兼容处理、账号更新入口及代码运行确认。若遇到启动时的 WINWORD.EXE 报错，可使用 [Word 启动诊断工具](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.3/Weyoung-Word-Startup-Diagnostics.zip) 采集报告；该问题需结合报错电脑的报告判断原因。
 
@@ -66,20 +73,20 @@
 安装包 SHA-256：
 
 ```text
-50c3567ad64d4dd7c3e3aaee3a87eee123a117aada06e8c61f3570e35f5e2c83
+bb3a36339b0412a16e3ca468cc71dcbb97e0d8843e610f41eda41f5b9e475083
 ```
 
 便携 ZIP SHA-256：
 
 ```text
-ea3c7014085d6e0bd2e6f9e0b6c2187d97cfe3217da9e44869861451810b6abf
+d359c1cf76c60c584fc3d492f07922cdf703935679e90115ac63361a520b1d43
 ```
 
 在文件所在目录运行 PowerShell：
 
 ```powershell
-Get-FileHash .\Weyoung-Desktop-1.0.5-Setup-x64.exe -Algorithm SHA256
-Get-FileHash .\Weyoung-Desktop-1.0.5-win-x64.zip -Algorithm SHA256
+Get-FileHash .\Weyoung-Desktop-1.0.6-Setup-x64.exe -Algorithm SHA256
+Get-FileHash .\Weyoung-Desktop-1.0.6-win-x64.zip -Algorithm SHA256
 ```
 
 ## 第三方组件
