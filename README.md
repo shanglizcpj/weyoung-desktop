@@ -1,18 +1,16 @@
 # 未央 WeYoung 桌面版
 
-## 当前下载：v1.0.8 模型目录修复版（20261013）
+## 当前下载：v1.0.9 MiniMax 请求兼容修复
 
-修复 zhipu-coding、OpenCode 等分组误显示 Claude 模型列表的问题，优先读取所选密钥对应的分组模型目录。
+修复客户端重复发送 JSON 请求头，导致 MiniMax 返回 HTTP 400 / 缺少 model 参数的问题。MiniMax-M3 的 Responses 接口已通过真实 Windows 核心连续两轮中文对话验证，保留此前的模型目录修复。
 
-**原版 v1.0.8 用户需手动重新下载并覆盖安装到原目录。** 自动更新只比较版本号，不能识别本次同版本修复。安装后账号页底部会显示“模型目录修复版（20261013）”；点击“刷新列表”后重新选择密钥和模型。
-
-[修复前原版存档](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.8-original)。
+**v1.0.8 用户可在账号页点击“检查更新”。** 关闭未央后沿用原安装目录安装新版，账号、聊天和项目文件保留。账号页版本应显示 1.0.9。此次不处理 OpenCode 渠道问题。
 
 连接 [未央中转站](https://weyoung.space) 的 Windows 中文 AI 客户端。用自己的账号登录，选择已有 API 密钥和模型，在桌面窗口聊天、阅读项目、编写代码和处理文件。
 
 ## API 接口支持
 
-v1.0.8 桌面版支持以下接口类型，账号页可选择：
+桌面版支持以下接口类型，账号页可选择：
 
 | 接口类型 | 中转站端点 |
 | --- | --- |
@@ -34,11 +32,11 @@ v1.0.8 桌面版支持以下接口类型，账号页可选择：
 
 报错和英文提醒在同一条消息中附中文说明，详见 [接口报错与提醒中文说明](接口报错说明.md)。
 
-## 下载 v1.0.8
+## 下载 v1.0.9
 
-**[下载完整离线安装包（推荐）](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.8/Weyoung-Desktop-1.0.8-Setup-x64.exe)** · [安装包校验值](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.8/Weyoung-Desktop-1.0.8-Setup-x64.exe.sha256)
+**[下载完整离线安装包（推荐）](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.9/Weyoung-Desktop-1.0.9-Setup-x64.exe)** · [安装包校验值](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.9/Weyoung-Desktop-1.0.9-Setup-x64.exe.sha256)
 
-[下载 Windows x64 便携 ZIP](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.8/Weyoung-Desktop-1.0.8-win-x64.zip) · [便携包校验值](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.8/Weyoung-Desktop-1.0.8-win-x64.zip.sha256) · [更新记录](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.8)
+[下载 Windows x64 便携 ZIP](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.9/Weyoung-Desktop-1.0.9-win-x64.zip) · [便携包校验值](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.9/Weyoung-Desktop-1.0.9-win-x64.zip.sha256) · [更新记录](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.9)
 
 安装包约 278.5 MiB，便携 ZIP 约 429.2 MiB，安装后约 1.01 GiB。安装程序可选择位置、创建桌面和开始菜单快捷方式，提供卸载入口。安装无需联网下载组件；无需单独安装 Node、Git 或 Docker。便携版完整解压后双击 **Weyoung.exe**，不要只复制 EXE。
 
@@ -88,7 +86,7 @@ v1.0.7 移除了未央自定义的命令审核规则，直接使用随包 Claude
 
 支持 Windows 10/11 x64。安装和启动可离线完成；账号登录和模型对话需要联网，并使用自己的中转站额度。Python、Java 等项目专用环境仍需自行准备。
 
-本版本通过 113 项自动化检查，使用真实 Windows 核心和本地模拟接口验证多协议文本、图片、流式、工具调用、停止、续聊及原生权限模式。新增密钥刷新、接口保存、中文提醒和原有桌面功能回归通过。便携启动、从 1.0.7 升级、覆盖安装、运行中禁止替换及卸载保留用户数据均已验证。未使用真实账号额度；站点分组的实际协议和模型兼容性以使用结果为准。
+本次通过 56 项协议、真实 Windows 核心、权限、停止/续聊、错误说明和更新检查回归；新增真实 HTTP 测试覆盖 Chat、Responses、Gemini 的请求头。另用真实账号完成 MiniMax-M3 两轮中文文本对话，其余分组和模型能力未逐一实测。Auto 下文本成功不代表 Responses 的原生工具审查分类器已兼容，见上方限制说明。
 
 保留鼠标显示兼容修复。启动时若遇 WINWORD.EXE 报错，可使用 [Word 启动诊断工具](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.3/Weyoung-Word-Startup-Diagnostics.zip) 采集报告。
 
