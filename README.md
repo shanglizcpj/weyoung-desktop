@@ -2,6 +2,12 @@
 
 连接 [未央中转站](https://weyoung.space) 的 Windows 中文 AI 客户端。用自己的账号登录，选择已有 API 密钥和模型，在桌面窗口聊天、阅读项目、编写代码和处理文件。
 
+## API 接口支持
+
+**目前仅支持 Anthropic 厂商 API 接口。**
+
+请在 [未央中转站](https://weyoung.space) 选择 **Anthropic / Claude** 分组下的 API Key。当前客户端使用 Anthropic Messages（`/v1/messages`）协议，暂不支持 OpenAI 等其他厂商的 API 接口。
+
 ## 下载 v1.0.7
 
 **[下载完整离线安装包（推荐）](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.7/Weyoung-Desktop-1.0.7-Setup-x64.exe)** · [安装包校验值](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.7/Weyoung-Desktop-1.0.7-Setup-x64.exe.sha256)
