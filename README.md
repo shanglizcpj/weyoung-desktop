@@ -4,15 +4,33 @@
 
 ## API 接口支持
 
-**目前仅支持 Anthropic 厂商 API 接口。**
+v1.0.8 桌面版支持以下接口类型，账号页可选择：
 
-请在 [未央中转站](https://weyoung.space) 选择 **Anthropic / Claude** 分组下的 API Key。当前客户端使用 Anthropic Messages（`/v1/messages`）协议，暂不支持 OpenAI 等其他厂商的 API 接口。
+| 接口类型 | 中转站端点 |
+| --- | --- |
+| Anthropic Messages | `/v1/messages` |
+| OpenAI Responses | `/v1/responses` |
+| OpenAI Chat Completions | `/v1/chat/completions` |
+| Gemini 原生接口 | `/v1beta/models/{model}:streamGenerateContent` |
 
-## 下载 v1.0.7
+在 [未央中转站](https://weyoung.space) 创建 API Key 后，回到客户端账号页点击 **刷新列表** 即可获取。客户端展示账号下各分组密钥，停用、过期或额度用尽的密钥会显示原因。常见分组自动推荐接口；未知分组保留在列表中，可手动选择接口类型。无需复制 API Key 或填写 URL。
 
-**[下载完整离线安装包（推荐）](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.7/Weyoung-Desktop-1.0.7-Setup-x64.exe)** · [安装包校验值](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.7/Weyoung-Desktop-1.0.7-Setup-x64.exe.sha256)
+接口协议与模型厂商不是一回事：同一厂商可能由中转站开放不同协议，请按密钥所属分组的实际能力选择。出现 404/405 或不支持的模型时，可检查接口类型；客户端不会自动轮流发起模型请求。某个接口出现在选择框中，不代表该分组一定已开放它。Antigravity 分组的 Messages/Gemini 使用站点对应前缀。
 
-[下载 Windows x64 便携 ZIP](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.7/Weyoung-Desktop-1.0.7-win-x64.zip) · [便携包校验值](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.7/Weyoung-Desktop-1.0.7-win-x64.zip.sha256) · [更新记录](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.7)
+原有对话继续使用原来的接口；切换模型、密钥或接口后开始新对话。三种新增协议经本机转换后仍由原生核心执行工具和权限判断。支持文本、流式输出、图片与函数工具调用；视觉、工具调用、上下文容量和 Auto 是否可用取决于所选模型与中转接口。
+
+**OpenAI Responses 当前可使用自动接受编辑和手动确认；原生 Auto 分类器需要 stop_sequences，而 Responses 无此参数，所以该组合暂不支持，遇到时保留拒绝结果。**
+
+目前单次转换请求最多申请 8,192 个输出 token；不自动探测模型上下文上限。暂不支持这些协议的全部专用功能，如音视频、Realtime/WebSocket、服务端内置工具及专用结构化输出。Gemini 思考签名与 Responses 加密推理上下文缓存在本机会话内以便续聊；无法转换的能力会明确报错。测试使用本地模拟接口和真实 Windows 核心，尚未逐一用站点真实额度验证所有分组。
+
+
+报错和英文提醒在同一条消息中附中文说明，详见 [接口报错与提醒中文说明](接口报错说明.md)。
+
+## 下载 v1.0.8
+
+**[下载完整离线安装包（推荐）](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.8/Weyoung-Desktop-1.0.8-Setup-x64.exe)** · [安装包校验值](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.8/Weyoung-Desktop-1.0.8-Setup-x64.exe.sha256)
+
+[下载 Windows x64 便携 ZIP](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.8/Weyoung-Desktop-1.0.8-win-x64.zip) · [便携包校验值](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.8/Weyoung-Desktop-1.0.8-win-x64.zip.sha256) · [更新记录](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.8)
 
 安装包约 278.5 MiB，便携 ZIP 约 429.2 MiB，安装后约 1.01 GiB。安装程序可选择位置、创建桌面和开始菜单快捷方式，提供卸载入口。安装无需联网下载组件；无需单独安装 Node、Git 或 Docker。便携版完整解压后双击 **Weyoung.exe**，不要只复制 EXE。
 
@@ -56,13 +74,13 @@ v1.0.7 移除了未央自定义的命令审核规则，直接使用随包 Claude
 
 升级前关闭软件并备份数据及项目。卸载只删除程序拥有的文件，保留个人数据。更换安装目录不会自动迁移旧数据；换电脑后需检查自定义绝对路径。
 
-[所有历史版本](https://github.com/shanglizcpj/weyoung-desktop/releases) · [v1.0.6](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.6) · [v1.0.5](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.5) · [v1.0.4](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.4) · [v1.0.3](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.3)
+[所有历史版本](https://github.com/shanglizcpj/weyoung-desktop/releases) · [v1.0.7](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.7) · [v1.0.6](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.6) · [v1.0.5](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.5) · [v1.0.4](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.4) · [v1.0.3](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.3)
 
 ## 兼容性与验证
 
 支持 Windows 10/11 x64。安装和启动可离线完成；账号登录和模型对话需要联网，并使用自己的中转站额度。Python、Java 等项目专用环境仍需自行准备。
 
-本版本通过 61 项自动化检查，使用真实 Windows 核心和本地模拟接口验证原生权限切换、文件写入、Git 查询、脚本允许/拒绝、权限记忆及 Auto 成功/失败。桌面附件、项目、会话、数据迁移和更新检查回归通过。便携启动、从 1.0.6 升级、覆盖安装、运行中禁止替换及卸载保留数据已验证。未使用真实账号额度；Auto 在具体中转模型上的兼容性以实际使用为准。
+本版本通过 113 项自动化检查，使用真实 Windows 核心和本地模拟接口验证多协议文本、图片、流式、工具调用、停止、续聊及原生权限模式。新增密钥刷新、接口保存、中文提醒和原有桌面功能回归通过。便携启动、从 1.0.7 升级、覆盖安装、运行中禁止替换及卸载保留用户数据均已验证。未使用真实账号额度；站点分组的实际协议和模型兼容性以使用结果为准。
 
 保留鼠标显示兼容修复。启动时若遇 WINWORD.EXE 报错，可使用 [Word 启动诊断工具](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.3/Weyoung-Word-Startup-Diagnostics.zip) 采集报告。
 
@@ -73,13 +91,13 @@ v1.0.7 移除了未央自定义的命令审核规则，直接使用随包 Claude
 安装包：
 
 ```text
-a78caa853c62068e8f1a2e556a0dd9df7b27f963ccd4af0510216158f86be48e
+f110b493045e450a916c5050bcee6b127471e1261e5babe27f0ebe918b98f886
 ```
 
 便携 ZIP：
 
 ```text
-4f267b6e8cdd5145980d4b1493639e47cb3a4e6c7c8bf986db5b9c267be3b02a
+bd3a447c25d5439650c0844b48da4761efe01a9129a4a4b7cfb36b16f8713492
 ```
 
 在文件所在目录用 PowerShell 运行 Get-FileHash，算法选择 SHA256，与上述值比较。
