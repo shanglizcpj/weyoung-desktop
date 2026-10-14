@@ -1,10 +1,14 @@
 # 未央 WeYoung 桌面版
 
-## 当前下载：v1.0.9 MiniMax 请求兼容修复
+## 当前下载：v1.0.10 流式响应与等待体验修复
 
-修复客户端重复发送 JSON 请求头，导致 MiniMax 返回 HTTP 400 / 缺少 model 参数的问题。MiniMax-M3 的 Responses 接口已通过真实 Windows 核心连续两轮中文对话验证，保留此前的模型目录修复。
+修复 OpenCode 的 Responses 回复已显示后，仍报“Responses output item changed”的兼容问题。对已经完整返回且内容一致的输出项，兼容中转站重新生成的外层编号；实际工具调用编号、名称、参数和加密上下文仍严格校验。保留 v1.0.9 的 MiniMax 请求头修复。
 
-**v1.0.8 用户可在账号页点击“检查更新”。** 关闭未央后沿用原安装目录安装新版，账号、聊天和项目文件保留。账号页版本应显示 1.0.9。此次不处理 OpenCode 渠道问题。
+连续输出现在约每 40 毫秒刷新一次界面，避免文字等到结束才出现。接口临时失败最多自动重试两次，并显示中文重试状态。该调整减少无效等待，不保证上游生成速度；单次网络等待、服务排队和模型思考仍可能较长，可随时点击停止。
+
+本轮真实 OpenCode 检查：glm-5.3-flash 已通过文字回复、Write 写文件和重启续聊；deepseek-v4-flash、gpt-5.6-luna、hy3、qwen3.8-flash 的后续短请求均收到站点 HTTP 503（Service temporarily unavailable），尚未通过完整工具/续聊验证。目录有模型不代表渠道当前可用，检查结果为当时状态。
+
+1.0.9 用户可在账号页检查更新，关闭未央后沿用原目录安装 1.0.10，账号、聊天和项目文件保留。Responses 原生 Auto 分类器的 stop_sequences 限制仍存在，请使用自动接受编辑或手动确认。
 
 连接 [未央中转站](https://weyoung.space) 的 Windows 中文 AI 客户端。用自己的账号登录，选择已有 API 密钥和模型，在桌面窗口聊天、阅读项目、编写代码和处理文件。
 
@@ -30,13 +34,13 @@
 目前单次转换请求最多申请 8,192 个输出 token；不自动探测模型上下文上限。暂不支持这些协议的全部专用功能，如音视频、Realtime/WebSocket、服务端内置工具及专用结构化输出。Gemini 思考签名与 Responses 加密推理上下文缓存在本机会话内以便续聊；无法转换的能力会明确报错。测试使用本地模拟接口和真实 Windows 核心，尚未逐一用站点真实额度验证所有分组。
 
 
-报错和英文提醒在同一条消息中附中文说明，详见 [接口报错与提醒中文说明](接口报错说明.md)。
+报错和英文提醒在同一条消息中附中文说明，详见 [接口报错与提醒中文说明](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.10/Weyoung-Error-Guide-zh-CN.md)。
 
-## 下载 v1.0.9
+## 下载 v1.0.10
 
-**[下载完整离线安装包（推荐）](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.9/Weyoung-Desktop-1.0.9-Setup-x64.exe)** · [安装包校验值](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.9/Weyoung-Desktop-1.0.9-Setup-x64.exe.sha256)
+**[下载完整离线安装包（推荐）](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.10/Weyoung-Desktop-1.0.10-Setup-x64.exe)** · [安装包校验值](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.10/Weyoung-Desktop-1.0.10-Setup-x64.exe.sha256)
 
-[下载 Windows x64 便携 ZIP](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.9/Weyoung-Desktop-1.0.9-win-x64.zip) · [便携包校验值](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.9/Weyoung-Desktop-1.0.9-win-x64.zip.sha256) · [更新记录](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.9)
+[下载 Windows x64 便携 ZIP](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.10/Weyoung-Desktop-1.0.10-win-x64.zip) · [便携包校验值](https://github.com/shanglizcpj/weyoung-desktop/releases/download/v1.0.10/Weyoung-Desktop-1.0.10-win-x64.zip.sha256) · [更新记录](https://github.com/shanglizcpj/weyoung-desktop/releases/tag/v1.0.10)
 
 安装包约 278.5 MiB，便携 ZIP 约 429.2 MiB，安装后约 1.01 GiB。安装程序可选择位置、创建桌面和开始菜单快捷方式，提供卸载入口。安装无需联网下载组件；无需单独安装 Node、Git 或 Docker。便携版完整解压后双击 **Weyoung.exe**，不要只复制 EXE。
 
